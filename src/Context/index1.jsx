@@ -18,10 +18,10 @@ console.log(import.meta.env)
 
     const options = {
         method: "GET",
-        url: `${import.meta.env.WEATHER_BASE_API_ENDPOINT}/current.json`,
+        url: `${import.meta.env.VITE_WEATHER_BASE_API_ENDPOINT}/current.json`,
         params: {
             q: place,
-            key: import.meta.env.WEATHER_API_KEY,
+            key: import.meta.env.VITE_WEATHER_API_KEY,
         }, 
         
     };
