@@ -21,6 +21,13 @@ const App = () => {
     return <div>Error: Invalid data type</div>;
   }
 
+  const windspeed = weather?.windspeed ?? 'N/A';
+  const humidity = weather?.humidity ?? 'N/A';
+  const temperature = weather?.temperature ?? 'N/A';
+  const heatIndex = weather?.heatIndex ?? 'N/A';
+  const conditions = weather?.conditions ?? 'N/A';
+
+
   return (
     <div className='w-full h-screen text-white px-8'>
       <nav className='w-full p-3 flex justify-between items-center'>
@@ -46,17 +53,17 @@ const App = () => {
       </div>
       </nav>
 
-      <BackgroundLayout></BackgroundLayout>
+      <BackgroundLayout />
       <main className='w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center'>
 
       <WeatherCard 
-      place={thisLocation}
-      windspeed={weather.windspeed}
-      humidity={weather.humidity}
-      temperature={weather.temp}
-      heatIndex={weather.heatIndex}
-      iconString={weather.conditions}
-      conditions={weather.conditions}
+      place={place}
+      windspeed={windspeed}
+      humidity={humidity}
+      temperature={temperature}
+      heatIndex={heatIndex}
+      iconString={conditions}
+      conditions={conditions}
       />
 
       <div className='flex justify-center gap-8 flex-wrap w-[60%]'>
@@ -76,6 +83,6 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
 
 

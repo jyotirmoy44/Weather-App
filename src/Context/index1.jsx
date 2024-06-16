@@ -2,12 +2,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 
-const StateContext = createContext()
+const StateContext = createContext();
 
 export const StateContextProvider = ({children}) => {
 
-const [weather, setWeather] = useState({})
-const [values, setValues] = useState({})
+const [weather, setWeather] = useState()
+const [values, setValues] = useState()
 const [place, setPlace] = useState('Guwahati')
 const [thisLocation, setLocation] = useState('')
 
@@ -29,7 +29,7 @@ console.log(import.meta.env)
         const response = await axios.request(options);
         console.log(response.data)
         setLocation(response.data.name);
-        setWeather(response.data.weather[0]);
+        setWeather(response.data.weather);
         
     } catch (error) {
         console.error(error);
@@ -48,11 +48,11 @@ useEffect(() => {
 
 return (
     <StateContext.Provider value={{
-        weather, setPlace, values, thisLocation, place
+        weather, setPlace, values, thisLocation, place,
     }}>
         {children}
     </StateContext.Provider>
 )
 }
 
-export const useStateContext = () => useContext(StateContext)
+export const useStateContext = () => useContext(StateContext);
